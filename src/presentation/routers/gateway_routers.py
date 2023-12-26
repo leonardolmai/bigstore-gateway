@@ -19,6 +19,29 @@ class RedirectToCommerceException(HTTPException):
         self.path = path
 
 
+# @router.route(
+#     "/{service_id}/{path:path}",
+#     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+# )
+# def gateway(service_id: int):
+#     return {"message": f"API Gateway Microservice {service_id}"}
+
+
 @router.get("/{service_id}/{path:path}")
-def gateway(service_id: int):
+def gateway_get(service_id: int):
+    return {"message": f"API Gateway Microservice {service_id}"}
+
+
+@router.post("/{service_id}/{path:path}")
+def gateway_post(service_id: int):
+    return {"message": f"API Gateway Microservice {service_id}"}
+
+
+@router.patch("/{service_id}/{path:path}")
+def gateway_patch(service_id: int):
+    return {"message": f"API Gateway Microservice {service_id}"}
+
+
+@router.delete("/{service_id}/{path:path}")
+def gateway_delete(service_id: int):
     return {"message": f"API Gateway Microservice {service_id}"}
