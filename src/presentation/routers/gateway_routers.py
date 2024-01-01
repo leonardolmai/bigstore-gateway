@@ -45,3 +45,8 @@ def gateway_patch(service_id: int):
 @router.delete("/{service_id}/{path:path}")
 def gateway_delete(service_id: int):
     return {"message": f"API Gateway Microservice {service_id}"}
+
+
+@router.options("/{service_id}/{path:path}")
+def gateway_options(service_id: int):
+    return {"message": f"API Gateway Microservice {service_id}"}
