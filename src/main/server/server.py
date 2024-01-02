@@ -45,7 +45,7 @@ def exception_handler_auth(
     request: Request, exc: gateway_routers.RedirectToAuthException
 ) -> Response:
     # destination_url = f"http://auth-ms:8001{exc.path}"
-    destination_url = f"http://0.0.0.0:8001{exc.path}"
+    destination_url = f"http://127.0.0.1:8001{exc.path}"
     return RedirectResponse(url=destination_url)
 
 
@@ -56,7 +56,7 @@ def exception_handler_commerce(
     # print(request.client)
     # print(request.headers)
     # print(request)
-    destination_url = f"http://0.0.0.0:8002{exc.path}"
+    destination_url = f"http://127.0.0.1:8002{exc.path}"
     # destination_url = f"http://commerce-ms:8002{exc.path}"
     return RedirectResponse(url=destination_url)
 
@@ -64,4 +64,4 @@ def exception_handler_commerce(
 # if request.client is None:
 #         destination_url = f"http://commerce-ms:8002{exc.path}"
 #     else:
-#         destination_url = f"http://0.0.0.0:8002{exc.path}"
+#         destination_url = f"http://127.0.0.1:8002{exc.path}"
