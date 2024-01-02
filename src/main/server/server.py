@@ -44,6 +44,7 @@ app.include_router(gateway_routers.router, dependencies=[Depends(api_gateway_rou
 def exception_handler_auth(
     request: Request, exc: gateway_routers.RedirectToAuthException
 ) -> Response:
+    # destination_url = f"http://auth-ms:8001{exc.path}"
     destination_url = f"http://0.0.0.0:8001{exc.path}"
     return RedirectResponse(url=destination_url)
 
@@ -52,5 +53,15 @@ def exception_handler_auth(
 def exception_handler_commerce(
     request: Request, exc: gateway_routers.RedirectToCommerceException
 ) -> Response:
+    # print(request.client)
+    # print(request.headers)
+    # print(request)
     destination_url = f"http://0.0.0.0:8002{exc.path}"
+    # destination_url = f"http://commerce-ms:8002{exc.path}"
     return RedirectResponse(url=destination_url)
+
+
+# if request.client is None:
+#         destination_url = f"http://commerce-ms:8002{exc.path}"
+#     else:
+#         destination_url = f"http://0.0.0.0:8002{exc.path}"
